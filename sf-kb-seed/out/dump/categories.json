@@ -1,0 +1,1002 @@
+[
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWpAAO"
+    },
+    "Id": "02oak000001UUWpAAO",
+    "ParentId": "ka0ak0000026JfDAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWqAAO"
+    },
+    "Id": "02oak000001UUWqAAO",
+    "ParentId": "ka0ak0000026JfEAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWrAAO"
+    },
+    "Id": "02oak000001UUWrAAO",
+    "ParentId": "ka0ak0000026JfFAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWsAAO"
+    },
+    "Id": "02oak000001UUWsAAO",
+    "ParentId": "ka0ak0000026JfGAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWtAAO"
+    },
+    "Id": "02oak000001UUWtAAO",
+    "ParentId": "ka0ak0000026JfHAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWuAAO"
+    },
+    "Id": "02oak000001UUWuAAO",
+    "ParentId": "ka0ak0000026JfIAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWvAAO"
+    },
+    "Id": "02oak000001UUWvAAO",
+    "ParentId": "ka0ak0000026JfJAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWwAAO"
+    },
+    "Id": "02oak000001UUWwAAO",
+    "ParentId": "ka0ak0000026JfKAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWxAAO"
+    },
+    "Id": "02oak000001UUWxAAO",
+    "ParentId": "ka0ak0000026JfLAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWyAAO"
+    },
+    "Id": "02oak000001UUWyAAO",
+    "ParentId": "ka0ak0000026JfMAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWzAAO"
+    },
+    "Id": "02oak000001UUWzAAO",
+    "ParentId": "ka0ak0000026JfNAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX0AAO"
+    },
+    "Id": "02oak000001UUX0AAO",
+    "ParentId": "ka0ak0000026JfOAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX1AAO"
+    },
+    "Id": "02oak000001UUX1AAO",
+    "ParentId": "ka0ak0000026JfPAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX2AAO"
+    },
+    "Id": "02oak000001UUX2AAO",
+    "ParentId": "ka0ak0000026JfQAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX3AAO"
+    },
+    "Id": "02oak000001UUX3AAO",
+    "ParentId": "ka0ak0000026JfRAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX4AAO"
+    },
+    "Id": "02oak000001UUX4AAO",
+    "ParentId": "ka0ak0000026JfSAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX5AAO"
+    },
+    "Id": "02oak000001UUX5AAO",
+    "ParentId": "ka0ak0000026JfTAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX6AAO"
+    },
+    "Id": "02oak000001UUX6AAO",
+    "ParentId": "ka0ak0000026JfUAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX7AAO"
+    },
+    "Id": "02oak000001UUX7AAO",
+    "ParentId": "ka0ak0000026JfVAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX8AAO"
+    },
+    "Id": "02oak000001UUX8AAO",
+    "ParentId": "ka0ak0000026JfWAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Payments"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX9AAO"
+    },
+    "Id": "02oak000001UUX9AAO",
+    "ParentId": "ka0ak0000026JfXAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXAAA4"
+    },
+    "Id": "02oak000001UUXAAA4",
+    "ParentId": "ka0ak0000026JfYAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXBAA4"
+    },
+    "Id": "02oak000001UUXBAA4",
+    "ParentId": "ka0ak0000026JfZAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXCAA4"
+    },
+    "Id": "02oak000001UUXCAA4",
+    "ParentId": "ka0ak0000026JfaAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXDAA4"
+    },
+    "Id": "02oak000001UUXDAA4",
+    "ParentId": "ka0ak0000026JfbAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXEAA4"
+    },
+    "Id": "02oak000001UUXEAA4",
+    "ParentId": "ka0ak0000026JfcAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXFAA4"
+    },
+    "Id": "02oak000001UUXFAA4",
+    "ParentId": "ka0ak0000026JfdAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXGAA4"
+    },
+    "Id": "02oak000001UUXGAA4",
+    "ParentId": "ka0ak0000026JfeAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXdAAO"
+    },
+    "Id": "02oak000001UUXdAAO",
+    "ParentId": "ka0ak0000026Jg1AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXeAAO"
+    },
+    "Id": "02oak000001UUXeAAO",
+    "ParentId": "ka0ak0000026Jg2AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXfAAO"
+    },
+    "Id": "02oak000001UUXfAAO",
+    "ParentId": "ka0ak0000026Jg3AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXgAAO"
+    },
+    "Id": "02oak000001UUXgAAO",
+    "ParentId": "ka0ak0000026Jg4AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Financing"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXhAAO"
+    },
+    "Id": "02oak000001UUXhAAO",
+    "ParentId": "ka0ak0000026Jg5AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Login"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXiAAO"
+    },
+    "Id": "02oak000001UUXiAAO",
+    "ParentId": "ka0ak0000026Jg6AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Login"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXjAAO"
+    },
+    "Id": "02oak000001UUXjAAO",
+    "ParentId": "ka0ak0000026Jg7AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Login"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXkAAO"
+    },
+    "Id": "02oak000001UUXkAAO",
+    "ParentId": "ka0ak0000026Jg8AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Login"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXHAA4"
+    },
+    "Id": "02oak000001UUXHAA4",
+    "ParentId": "ka0ak0000026JffAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Profile"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXIAA4"
+    },
+    "Id": "02oak000001UUXIAA4",
+    "ParentId": "ka0ak0000026JfgAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Profile"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXJAA4"
+    },
+    "Id": "02oak000001UUXJAA4",
+    "ParentId": "ka0ak0000026JfhAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Profile"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXKAA4"
+    },
+    "Id": "02oak000001UUXKAA4",
+    "ParentId": "ka0ak0000026JfiAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Profile"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXXAA4"
+    },
+    "Id": "02oak000001UUXXAA4",
+    "ParentId": "ka0ak0000026JfvAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Profile"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXYAA4"
+    },
+    "Id": "02oak000001UUXYAA4",
+    "ParentId": "ka0ak0000026JfwAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Profile"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWLAA4"
+    },
+    "Id": "02oak000001UUWLAA4",
+    "ParentId": "ka0ak0000026JejAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWMAA4"
+    },
+    "Id": "02oak000001UUWMAA4",
+    "ParentId": "ka0ak0000026JekAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXLAA4"
+    },
+    "Id": "02oak000001UUXLAA4",
+    "ParentId": "ka0ak0000026JfjAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXMAA4"
+    },
+    "Id": "02oak000001UUXMAA4",
+    "ParentId": "ka0ak0000026JfkAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXlAAO"
+    },
+    "Id": "02oak000001UUXlAAO",
+    "ParentId": "ka0ak0000026Jg9AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXmAAO"
+    },
+    "Id": "02oak000001UUXmAAO",
+    "ParentId": "ka0ak0000026JgAAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXnAAO"
+    },
+    "Id": "02oak000001UUXnAAO",
+    "ParentId": "ka0ak0000026JgBAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXoAAO"
+    },
+    "Id": "02oak000001UUXoAAO",
+    "ParentId": "ka0ak0000026JgCAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWNAA4"
+    },
+    "Id": "02oak000001UUWNAA4",
+    "ParentId": "ka0ak0000026JelAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWOAA4"
+    },
+    "Id": "02oak000001UUWOAA4",
+    "ParentId": "ka0ak0000026JemAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWPAA4"
+    },
+    "Id": "02oak000001UUWPAA4",
+    "ParentId": "ka0ak0000026JenAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWQAA4"
+    },
+    "Id": "02oak000001UUWQAA4",
+    "ParentId": "ka0ak0000026JeoAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWRAA4"
+    },
+    "Id": "02oak000001UUWRAA4",
+    "ParentId": "ka0ak0000026JepAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWSAA4"
+    },
+    "Id": "02oak000001UUWSAA4",
+    "ParentId": "ka0ak0000026JeqAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWTAA4"
+    },
+    "Id": "02oak000001UUWTAA4",
+    "ParentId": "ka0ak0000026JerAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWUAA4"
+    },
+    "Id": "02oak000001UUWUAA4",
+    "ParentId": "ka0ak0000026JesAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXNAA4"
+    },
+    "Id": "02oak000001UUXNAA4",
+    "ParentId": "ka0ak0000026JflAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXOAA4"
+    },
+    "Id": "02oak000001UUXOAA4",
+    "ParentId": "ka0ak0000026JfmAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXPAA4"
+    },
+    "Id": "02oak000001UUXPAA4",
+    "ParentId": "ka0ak0000026JfnAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXQAA4"
+    },
+    "Id": "02oak000001UUXQAA4",
+    "ParentId": "ka0ak0000026JfoAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWVAA4"
+    },
+    "Id": "02oak000001UUWVAA4",
+    "ParentId": "ka0ak0000026JetAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWWAA4"
+    },
+    "Id": "02oak000001UUWWAA4",
+    "ParentId": "ka0ak0000026JeuAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWXAA4"
+    },
+    "Id": "02oak000001UUWXAA4",
+    "ParentId": "ka0ak0000026JevAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWYAA4"
+    },
+    "Id": "02oak000001UUWYAA4",
+    "ParentId": "ka0ak0000026JewAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXRAA4"
+    },
+    "Id": "02oak000001UUXRAA4",
+    "ParentId": "ka0ak0000026JfpAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXSAA4"
+    },
+    "Id": "02oak000001UUXSAA4",
+    "ParentId": "ka0ak0000026JfqAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXTAA4"
+    },
+    "Id": "02oak000001UUXTAA4",
+    "ParentId": "ka0ak0000026JfrAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXUAA4"
+    },
+    "Id": "02oak000001UUXUAA4",
+    "ParentId": "ka0ak0000026JfsAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXZAA4"
+    },
+    "Id": "02oak000001UUXZAA4",
+    "ParentId": "ka0ak0000026JfxAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXaAAO"
+    },
+    "Id": "02oak000001UUXaAAO",
+    "ParentId": "ka0ak0000026JfyAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXpAAO"
+    },
+    "Id": "02oak000001UUXpAAO",
+    "ParentId": "ka0ak0000026JgDAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXqAAO"
+    },
+    "Id": "02oak000001UUXqAAO",
+    "ParentId": "ka0ak0000026JgEAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXrAAO"
+    },
+    "Id": "02oak000001UUXrAAO",
+    "ParentId": "ka0ak0000026JgFAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXsAAO"
+    },
+    "Id": "02oak000001UUXsAAO",
+    "ParentId": "ka0ak0000026JgGAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXtAAO"
+    },
+    "Id": "02oak000001UUXtAAO",
+    "ParentId": "ka0ak0000026JgHAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXuAAO"
+    },
+    "Id": "02oak000001UUXuAAO",
+    "ParentId": "ka0ak0000026JgIAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXvAAO"
+    },
+    "Id": "02oak000001UUXvAAO",
+    "ParentId": "ka0ak0000026JgJAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXwAAO"
+    },
+    "Id": "02oak000001UUXwAAO",
+    "ParentId": "ka0ak0000026JgKAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Scheduling"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWZAA4"
+    },
+    "Id": "02oak000001UUWZAA4",
+    "ParentId": "ka0ak0000026JexAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Permits"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWaAAO"
+    },
+    "Id": "02oak000001UUWaAAO",
+    "ParentId": "ka0ak0000026JeyAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Permits"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWbAAO"
+    },
+    "Id": "02oak000001UUWbAAO",
+    "ParentId": "ka0ak0000026JezAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Permits"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWcAAO"
+    },
+    "Id": "02oak000001UUWcAAO",
+    "ParentId": "ka0ak0000026Jf0AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Permits"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWdAAO"
+    },
+    "Id": "02oak000001UUWdAAO",
+    "ParentId": "ka0ak0000026Jf1AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Permits"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWeAAO"
+    },
+    "Id": "02oak000001UUWeAAO",
+    "ParentId": "ka0ak0000026Jf2AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Permits"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWfAAO"
+    },
+    "Id": "02oak000001UUWfAAO",
+    "ParentId": "ka0ak0000026Jf3AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWgAAO"
+    },
+    "Id": "02oak000001UUWgAAO",
+    "ParentId": "ka0ak0000026Jf4AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWhAAO"
+    },
+    "Id": "02oak000001UUWhAAO",
+    "ParentId": "ka0ak0000026Jf5AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWiAAO"
+    },
+    "Id": "02oak000001UUWiAAO",
+    "ParentId": "ka0ak0000026Jf6AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWjAAO"
+    },
+    "Id": "02oak000001UUWjAAO",
+    "ParentId": "ka0ak0000026Jf7AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWkAAO"
+    },
+    "Id": "02oak000001UUWkAAO",
+    "ParentId": "ka0ak0000026Jf8AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWlAAO"
+    },
+    "Id": "02oak000001UUWlAAO",
+    "ParentId": "ka0ak0000026Jf9AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWmAAO"
+    },
+    "Id": "02oak000001UUWmAAO",
+    "ParentId": "ka0ak0000026JfAAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWnAAO"
+    },
+    "Id": "02oak000001UUWnAAO",
+    "ParentId": "ka0ak0000026JfBAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWoAAO"
+    },
+    "Id": "02oak000001UUWoAAO",
+    "ParentId": "ka0ak0000026JfCAAU",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXVAA4"
+    },
+    "Id": "02oak000001UUXVAA4",
+    "ParentId": "ka0ak0000026JftAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXWAA4"
+    },
+    "Id": "02oak000001UUXWAA4",
+    "ParentId": "ka0ak0000026JfuAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXbAAO"
+    },
+    "Id": "02oak000001UUXbAAO",
+    "ParentId": "ka0ak0000026JfzAAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXcAAO"
+    },
+    "Id": "02oak000001UUXcAAO",
+    "ParentId": "ka0ak0000026Jg0AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  }
+]

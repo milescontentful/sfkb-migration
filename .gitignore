@@ -14,3 +14,9 @@ node_modules/
 .claude/
 .playwright-mcp/
 .DS_Store
+
+# Exception: dump fixtures are the handoff artifact for the Contentful app team
+!sf-kb-seed/out/
+sf-kb-seed/out/*
+!sf-kb-seed/out/dump/
+*-records.csv

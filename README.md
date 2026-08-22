@@ -30,8 +30,19 @@ Secrets (Connected App consumer key/secret, Anthropic API key) live in
 ## Status (2026-08-22)
 
 - ✅ Phases 0–2: Knowledge enabled, schema deployed & verified
+- ✅ Phase 3: corpus expanded to 300 articles (`corpus/brightline-kb.json`)
+- ✅ Phase 4: **100 articles loaded, categorized, and published (Online)** —
+  this Developer Edition org caps Knowledge at 100 articles, so the loaded set
+  is a proportional sample of the 300-article corpus (56 FAQ / 28 News / 16 Procedure)
 - ✅ Phase 5: Connected App live, client-credentials OAuth verified end-to-end
+- ✅ Phase 6: JSON fixtures dumped via the Connected App →
+  **`sf-kb-seed/out/dump/`** (committed — this + `contentful-model.json` is the
+  app team's input: 100 articles, 100 category links, per-field HTML)
 - ✅ Phase 7a: Einstein + Agentforce enabled, Data Cloud permsets in place
-- 🔄 Phase 3: corpus expansion running (target 300 articles)
-- ⏭ Phases 4, 6, 7b–7e: bulk load → publish → fixtures → Data Library → agent
+- ⏭ Phases 7b–7e: Data Library → agent build → demo script
 - ⏭ Phase 8 (the deliverable): Contentful sync app
+
+Gotchas hit & fixed (already patched in this repo): `Knowledge__kav` object XML
+needed `deploymentStatus` + `sharingModel`; bulk CSV rows containing CRLF fail
+LF-mode ingest jobs; `publish-drafts.apex` referenced `IsMasterLanguage`, which
+doesn't exist in single-language orgs.
