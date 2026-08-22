@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>KB Seed Fields</label>
+    <hasActivationRequired>false</hasActivationRequired>
+    <fieldPermissions><editable>true</editable><field>Knowledge__kav.Question__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Knowledge__kav.Answer__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Knowledge__kav.Procedure_Body__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Knowledge__kav.Abstract__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Knowledge__kav.Body__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Knowledge__kav.Procedure_Audience__c</field><readable>true</readable></fieldPermissions>
+    <recordTypeVisibilities><recordType>Knowledge__kav.FAQ</recordType><visible>true</visible></recordTypeVisibilities>
+    <recordTypeVisibilities><recordType>Knowledge__kav.Procedure</recordType><visible>true</visible></recordTypeVisibilities>
+    <recordTypeVisibilities><recordType>Knowledge__kav.News</recordType><visible>true</visible></recordTypeVisibilities>
+</PermissionSet>

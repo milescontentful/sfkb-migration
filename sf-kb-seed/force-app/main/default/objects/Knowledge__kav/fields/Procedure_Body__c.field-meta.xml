@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Procedure_Body__c</fullName>
+    <label>Procedure Body</label>
+    <type>Html</type>
+    <length>131072</length><visibleLines>25</visibleLines>
+</CustomField>

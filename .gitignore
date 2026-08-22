@@ -1,0 +1,16 @@
+# Secrets — never commit
+.env.local
+.env*
+
+# Generated output (bulk CSVs, dumps, inserted IDs)
+sf-kb-seed/out/
+out/
+
+# Redundant archive of sf-kb-seed/
+sf-kb-seed.zip
+
+# Local tooling
+node_modules/
+.claude/
+.playwright-mcp/
+.DS_Store

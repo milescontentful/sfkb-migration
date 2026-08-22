@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCategoryGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <label>Products</label>
+    <description>Brightline Solar support topics</description>
+    <dataCategory>
+        <name>All</name><label>All</label>
+        <dataCategory><name>Billing</name><label>Billing</label>
+            <dataCategory><name>Invoices</name><label>Invoices</label></dataCategory>
+            <dataCategory><name>Payments</name><label>Payments</label></dataCategory>
+            <dataCategory><name>Financing</name><label>Financing</label></dataCategory>
+        </dataCategory>
+        <dataCategory><name>Account</name><label>Account</label>
+            <dataCategory><name>Login</name><label>Login</label></dataCategory>
+            <dataCategory><name>Profile</name><label>Profile</label></dataCategory>
+        </dataCategory>
+        <dataCategory><name>Monitoring_App</name><label>Monitoring App</label>
+            <dataCategory><name>Alerts</name><label>Alerts</label></dataCategory>
+            <dataCategory><name>Reports</name><label>Reports</label></dataCategory>
+        </dataCategory>
+        <dataCategory><name>Installation</name><label>Installation</label>
+            <dataCategory><name>Scheduling</name><label>Scheduling</label></dataCategory>
+            <dataCategory><name>Permits</name><label>Permits</label></dataCategory>
+        </dataCategory>
+        <dataCategory><name>Partner_API</name><label>Partner API</label></dataCategory>
+    </dataCategory>
+    <objectUsage><object>KnowledgeArticleVersion</object></objectUsage>
+</DataCategoryGroup>
