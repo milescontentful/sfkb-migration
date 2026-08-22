@@ -2,6 +2,7 @@
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <label>KB Seed Fields</label>
     <hasActivationRequired>false</hasActivationRequired>
+    <objectPermissions><object>Knowledge__kav</object><allowRead>true</allowRead><allowCreate>false</allowCreate><allowEdit>false</allowEdit><allowDelete>false</allowDelete><viewAllRecords>true</viewAllRecords><modifyAllRecords>false</modifyAllRecords></objectPermissions>
     <fieldPermissions><editable>true</editable><field>Knowledge__kav.Question__c</field><readable>true</readable></fieldPermissions>
     <fieldPermissions><editable>true</editable><field>Knowledge__kav.Answer__c</field><readable>true</readable></fieldPermissions>
     <fieldPermissions><editable>true</editable><field>Knowledge__kav.Procedure_Body__c</field><readable>true</readable></fieldPermissions>
