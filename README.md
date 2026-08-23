@@ -45,6 +45,20 @@ Secrets (Connected App consumer key/secret, Anthropic API key) live in
 - ⏭ Phase 8 (the deliverable): Contentful sync app — all inputs ready in
   `sf-kb-seed/out/dump/` + `docs/contentful-model.json` + `.env.local` creds
 
+## Target architecture (decided 2026-08-22)
+
+**"One KB, Two Brains"** — Contentful becomes the content home (authoring,
+taxonomy/topic pages, locales); Salesforce keeps the retrieval index and agent the
+customer already owns, fed by a **sync-back** of published entries into
+`Knowledge__kav` (the reverse of the extract pipeline in this repo), with the
+Agentforce chat widget embedded on the Contentful help center. Full one-pager with
+diagrams, option comparison, watchouts, and the localization story:
+https://claude.ai/code/artifact/6be7e0da-f5f4-46bc-be80-593578c0e6f0
+
+**Resume point:** Salesforce side is 100% done. Next session starts Phase 8 —
+build the Contentful sync app against `out/dump/` fixtures, then reverse it per
+the architecture above.
+
 Gotchas hit & fixed (already patched in this repo): `Knowledge__kav` object XML
 needed `deploymentStatus` + `sharingModel`; bulk CSV rows containing CRLF fail
 LF-mode ingest jobs; `publish-drafts.apex` referenced `IsMasterLanguage`, which
