@@ -16,7 +16,17 @@ changed, what's done, and the one open blocker.
   `AgentforceServiceAgentSecureBase`, and `KB_Seed_Fields` (Read + all fields on
   `Knowledge__kav`).
 
-## Open blocker: RAG feature assignment
+## ✅ RESOLVED (2026-08-22 ~5:45 PM): RAG feature assignment
+Miles found the missing surface: in Agentforce Builder, the Explorer has a
+**Data Library** item ("Add a Data Library to Your Agent") with a Data Library
+dropdown. Selecting **Brightline KB** there + Save is the formal assignment.
+After Reset Simulator, the agent answers from the KB — verified with the billing
+question (prorated charges, production variations, correct app menu paths) and
+the Partner API token question (client_credentials flow, 1-hour expiry).
+
+Historical detail of the diagnosis below, kept for colleagues who hit the same wall.
+
+## ~~Open blocker: RAG feature assignment~~ (original diagnosis)
 The GeneralFAQ knowledge action fails at runtime: *missing RAG feature configuration*.
 Root cause (confirmed three ways): `ragFeatureConfigId` must be the developer name of a
 **GenAiRetrievalConfig** record, which Salesforce only creates when a data library is

@@ -38,9 +38,12 @@ Secrets (Connected App consumer key/secret, Anthropic API key) live in
 - ✅ Phase 6: JSON fixtures dumped via the Connected App →
   **`sf-kb-seed/out/dump/`** (committed — this + `contentful-model.json` is the
   app team's input: 100 articles, 100 category links, per-field HTML)
-- ✅ Phase 7a: Einstein + Agentforce enabled, Data Cloud permsets in place
-- ⏭ Phases 7b–7e: Data Library → agent build → demo script
-- ⏭ Phase 8 (the deliverable): Contentful sync app
+- ✅ Phase 7a: Einstein + Agentforce enabled, Data Cloud provisioned
+- ✅ Phases 7b–7e: **Brightline Support agent live and answering from the KB**
+  (new Agentforce Builder — see `docs/agent-build-notes.md` for the build story
+  and the one non-obvious step: the Data Library panel in the builder's Explorer)
+- ⏭ Phase 8 (the deliverable): Contentful sync app — all inputs ready in
+  `sf-kb-seed/out/dump/` + `docs/contentful-model.json` + `.env.local` creds
 
 Gotchas hit & fixed (already patched in this repo): `Knowledge__kav` object XML
 needed `deploymentStatus` + `sharingModel`; bulk CSV rows containing CRLF fail
