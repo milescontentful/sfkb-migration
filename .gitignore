@@ -20,3 +20,5 @@ node_modules/
 sf-kb-seed/out/*
 !sf-kb-seed/out/dump/
 *-records.csv
+!sf-kb-seed/out/swap/
+.serena/
