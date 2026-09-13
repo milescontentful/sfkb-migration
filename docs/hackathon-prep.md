@@ -13,7 +13,7 @@
 | Target space | ✅ created **`01 - Brightline Solar` = `3m1ne1iyqxvp`** (MS Sandbox org, empty on purpose); IDs in `.env.local` |
 | App Definition | ✅ created **`43KDrwm5xKCtTQV6E93kHD`** "Salesforce Knowledge Migration", src `http://localhost:3000`, locations app-config + page ("Salesforce Migration" nav item) + entry-sidebar. Swap src to the Vercel URL on demo day |
 | Fixture swap | ✅ done 2026-09-13 — org at 100 Online, dump census img=2 pre=6 style=5 table=48. Gotcha: the 100-article cap counts the recycle bin; `Database.emptyRecycleBin` was needed between remove and reload (`sf-kb-seed/out/swap/`) |
-| Team access | ⏸ Miles runs `bash scripts/invite-team.sh` — Contentful space admin (Uriel now, Mike via org invite), Salesforce dev-org users + password email, GitHub push for `mpalazzo-dl` and `uriel-reyes` (handles matched by name + company on their profiles; confirm before running if unsure) |
+| Team access | ✅ Uriel = Contentful space admin · ✅ Mike = Contentful org invite sent (open) · ✅ GitHub push invites to `mpalazzo-dl` + `uriel-reyes` · ✅ Mike's Salesforce user + password email · ⏸ Uriel's Salesforce user (license counter lag) and Mike's space-admin (after he accepts) → `bash scripts/invite-team-2.sh` |
 
 ## What is verified live today (observed, not reasoned)
 
