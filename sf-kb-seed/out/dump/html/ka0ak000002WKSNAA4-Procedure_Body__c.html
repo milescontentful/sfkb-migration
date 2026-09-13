@@ -1,0 +1,8 @@
+<p>Prerequisite: a Partner API application with a client ID and secret from the <a href="https://partners.brightlinesolar.com" target="_blank">Partner Portal</a>.</p><h2>Request</h2><pre>POST https://api.brightlinesolar.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&amp;client_id=YOUR_ID&amp;client_secret=YOUR_SECRET&amp;scope=sites:read production:read</pre><h2>Response</h2><pre>{
+  &quot;access_token&quot;: &quot;eyJ...&quot;,
+  &quot;token_type&quot;: &quot;Bearer&quot;,
+  &quot;expires_in&quot;: 3600
+}</pre><p>Cache the token and refresh it before expiry. Tokens are not revoked on rotation of the secret for 10 minutes, giving you a rollover window.</p><p>Next: <a href="/articles/Knowledge/partner-api-overview" target="_blank">Partner API overview</a>.</p>

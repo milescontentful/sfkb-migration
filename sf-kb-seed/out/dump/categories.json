@@ -82,6 +82,16 @@
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsqvAAA"
+    },
+    "Id": "02oak000001zsqvAAA",
+    "ParentId": "ka0ak000002WKSHAA4",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Invoices"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
       "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWxAAO"
     },
     "Id": "02oak000001UUWxAAO",
@@ -142,36 +152,6 @@
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX3AAO"
-    },
-    "Id": "02oak000001UUX3AAO",
-    "ParentId": "ka0ak0000026JfRAAU",
-    "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Payments"
-  },
-  {
-    "attributes": {
-      "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX4AAO"
-    },
-    "Id": "02oak000001UUX4AAO",
-    "ParentId": "ka0ak0000026JfSAAU",
-    "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Payments"
-  },
-  {
-    "attributes": {
-      "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX5AAO"
-    },
-    "Id": "02oak000001UUX5AAO",
-    "ParentId": "ka0ak0000026JfTAAU",
-    "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Payments"
-  },
-  {
-    "attributes": {
-      "type": "Knowledge__DataCategorySelection",
       "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX6AAO"
     },
     "Id": "02oak000001UUX6AAO",
@@ -192,10 +172,10 @@
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUX8AAO"
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsqyAAA"
     },
-    "Id": "02oak000001UUX8AAO",
-    "ParentId": "ka0ak0000026JfWAAU",
+    "Id": "02oak000001zsqyAAA",
+    "ParentId": "ka0ak000002WKSKAA4",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Payments"
   },
@@ -362,12 +342,12 @@
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXHAA4"
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsqzAAA"
     },
-    "Id": "02oak000001UUXHAA4",
-    "ParentId": "ka0ak0000026JffAAE",
+    "Id": "02oak000001zsqzAAA",
+    "ParentId": "ka0ak000002WKSLAA4",
     "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Profile"
+    "DataCategoryName": "Login"
   },
   {
     "attributes": {
@@ -386,16 +366,6 @@
     },
     "Id": "02oak000001UUXJAA4",
     "ParentId": "ka0ak0000026JfhAAE",
-    "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Profile"
-  },
-  {
-    "attributes": {
-      "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXKAA4"
-    },
-    "Id": "02oak000001UUXKAA4",
-    "ParentId": "ka0ak0000026JfiAAE",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Profile"
   },
@@ -502,6 +472,26 @@
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsqwAAA"
+    },
+    "Id": "02oak000001zsqwAAA",
+    "ParentId": "ka0ak000002WKSIAA4",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsr0AAA"
+    },
+    "Id": "02oak000001zsr0AAA",
+    "ParentId": "ka0ak000002WKSMAA4",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Alerts"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
       "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWNAA4"
     },
     "Id": "02oak000001UUWNAA4",
@@ -516,26 +506,6 @@
     },
     "Id": "02oak000001UUWOAA4",
     "ParentId": "ka0ak0000026JemAAE",
-    "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Reports"
-  },
-  {
-    "attributes": {
-      "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWPAA4"
-    },
-    "Id": "02oak000001UUWPAA4",
-    "ParentId": "ka0ak0000026JenAAE",
-    "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Reports"
-  },
-  {
-    "attributes": {
-      "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWQAA4"
-    },
-    "Id": "02oak000001UUWQAA4",
-    "ParentId": "ka0ak0000026JeoAAE",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Reports"
   },
@@ -602,20 +572,30 @@
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXPAA4"
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXQAA4"
     },
-    "Id": "02oak000001UUXPAA4",
-    "ParentId": "ka0ak0000026JfnAAE",
+    "Id": "02oak000001UUXQAA4",
+    "ParentId": "ka0ak0000026JfoAAE",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Reports"
   },
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXQAA4"
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsr5AAA"
     },
-    "Id": "02oak000001UUXQAA4",
-    "ParentId": "ka0ak0000026JfoAAE",
+    "Id": "02oak000001zsr5AAA",
+    "ParentId": "ka0ak000002WKSRAA4",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Reports"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsr6AAA"
+    },
+    "Id": "02oak000001zsr6AAA",
+    "ParentId": "ka0ak000002WKSSAA4",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Reports"
   },
@@ -752,16 +732,6 @@
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXsAAO"
-    },
-    "Id": "02oak000001UUXsAAO",
-    "ParentId": "ka0ak0000026JgGAAU",
-    "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Scheduling"
-  },
-  {
-    "attributes": {
-      "type": "Knowledge__DataCategorySelection",
       "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXtAAO"
     },
     "Id": "02oak000001UUXtAAO",
@@ -782,20 +752,20 @@
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXvAAO"
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXwAAO"
     },
-    "Id": "02oak000001UUXvAAO",
-    "ParentId": "ka0ak0000026JgJAAU",
+    "Id": "02oak000001UUXwAAO",
+    "ParentId": "ka0ak0000026JgKAAU",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Scheduling"
   },
   {
     "attributes": {
       "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUXwAAO"
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsr4AAA"
     },
-    "Id": "02oak000001UUXwAAO",
-    "ParentId": "ka0ak0000026JgKAAU",
+    "Id": "02oak000001zsr4AAA",
+    "ParentId": "ka0ak000002WKSQAA4",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Scheduling"
   },
@@ -846,16 +816,6 @@
     },
     "Id": "02oak000001UUWdAAO",
     "ParentId": "ka0ak0000026Jf1AAE",
-    "DataCategoryGroupName": "Products",
-    "DataCategoryName": "Permits"
-  },
-  {
-    "attributes": {
-      "type": "Knowledge__DataCategorySelection",
-      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001UUWeAAO"
-    },
-    "Id": "02oak000001UUWeAAO",
-    "ParentId": "ka0ak0000026Jf2AAE",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Permits"
   },
@@ -996,6 +956,46 @@
     },
     "Id": "02oak000001UUXcAAO",
     "ParentId": "ka0ak0000026Jg0AAE",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsqxAAA"
+    },
+    "Id": "02oak000001zsqxAAA",
+    "ParentId": "ka0ak000002WKSJAA4",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsr1AAA"
+    },
+    "Id": "02oak000001zsr1AAA",
+    "ParentId": "ka0ak000002WKSNAA4",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsr2AAA"
+    },
+    "Id": "02oak000001zsr2AAA",
+    "ParentId": "ka0ak000002WKSOAA4",
+    "DataCategoryGroupName": "Products",
+    "DataCategoryName": "Partner_API"
+  },
+  {
+    "attributes": {
+      "type": "Knowledge__DataCategorySelection",
+      "url": "/services/data/v62.0/sobjects/Knowledge__DataCategorySelection/02oak000001zsr3AAA"
+    },
+    "Id": "02oak000001zsr3AAA",
+    "ParentId": "ka0ak000002WKSPAA4",
     "DataCategoryGroupName": "Products",
     "DataCategoryName": "Partner_API"
   }
