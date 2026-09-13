@@ -12,7 +12,8 @@
 | Agent re-verified | ✅ observed in builder Preview: "How do I get an API token…" → routed General FAQ → AnswerQuestionsWithKnowledge → **Output Evaluation: GROUNDED**, client_credentials + 1-hour token |
 | Target space | ✅ created **`01 - Brightline Solar` = `3m1ne1iyqxvp`** (MS Sandbox org, empty on purpose); IDs in `.env.local` |
 | App Definition | ✅ created **`43KDrwm5xKCtTQV6E93kHD`** "Salesforce Knowledge Migration", src `http://localhost:3000`, locations app-config + page ("Salesforce Migration" nav item) + entry-sidebar. Swap src to the Vercel URL on demo day |
-| Fixture swap | ⏸ **blocked** — Claude's auto-mode won't run article removal. Everything is staged in `sf-kb-seed/out/swap/`. Miles runs: `bash sf-kb-seed/out/swap/run-swap.sh` (~3 min), then commits the new `out/dump/` |
+| Fixture swap | ✅ done 2026-09-13 — org at 100 Online, dump census img=2 pre=6 style=5 table=48. Gotcha: the 100-article cap counts the recycle bin; `Database.emptyRecycleBin` was needed between remove and reload (`sf-kb-seed/out/swap/`) |
+| Team access | ⏸ Miles runs `bash scripts/invite-team.sh` — Contentful space admin (Uriel now, Mike via org invite), Salesforce dev-org users + password email, GitHub push for `mpalazzo-dl` and `uriel-reyes` (handles matched by name + company on their profiles; confirm before running if unsure) |
 
 ## What is verified live today (observed, not reasoned)
 

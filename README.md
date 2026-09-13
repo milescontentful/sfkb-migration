@@ -27,6 +27,39 @@ this demo shows the two products working as one content pipeline.
 Secrets (Connected App consumer key/secret, Anthropic API key) live in
 `.env.local`, which is gitignored — ask Miles for values.
 
+## Mike & Uriel — start here (updated 2026-09-13)
+
+**Read `docs/hackathon-prep.md` first.** It has the event facts, what is verified live,
+the architecture we decided on, the scope tiers for the two days, and the team split.
+
+**Rule:** Brett's hackathon rule is *no building until we're in person* (Sep 23–24, Denver).
+Everything in this repo so far is data seeding, setup records, and decisions — the app
+itself starts on the 23rd.
+
+**What already exists for you:**
+
+| Thing | Where | Notes |
+|---|---|---|
+| Salesforce dev org, 100 published Knowledge articles | URL in `docs/org.md` | You'll get a password-setup email once Miles runs `scripts/invite-team.sh` |
+| Agentforce agent "Brightline Support" | Agentforce Studio in that org | Answers from the KB; verified grounded on 2026-09-13 |
+| Contentful target space `01 - Brightline Solar` | space ID `3m1ne1iyqxvp` | **Empty on purpose** — the app creates the content model live in the demo |
+| Contentful App Definition "Salesforce Knowledge Migration" | ID `43KDrwm5xKCtTQV6E93kHD` | Locations: app-config, page, entry-sidebar. Frontend URL is `localhost:3000` until we deploy |
+| Fixtures (offline copy of the 100 articles) | `sf-kb-seed/out/dump/` | 100 articles + categories + 178 HTML files; covers tables, cross-links, code blocks, inline styles, images |
+| Target content model + field mapping | `docs/contentful-model.json` | Two content types; the app's mapping step should reproduce this |
+| Salesforce Connected App creds | `.env.local` (gitignored) | Ask Miles; the app's settings screen takes these |
+
+**The one thing to know about the source data:** this Developer Edition org caps Knowledge
+at exactly 100 articles, and the cap counts articles in the recycle bin. The full 300-article
+corpus lives in `sf-kb-seed/corpus/`.
+
+## Status (2026-09-13)
+
+- ✅ Salesforce side complete (Phases 0–7 below) and re-verified 2026-09-13
+- ✅ Fixtures swapped so every transform rule has a real case (img=2, pre=6, style=5, table=48)
+- ✅ Contentful target space + App Definition created (empty, by design)
+- ✅ Architecture decided — see `docs/hackathon-prep.md`
+- ⏭ Phase 8 (the app) starts in person on 2026-09-23
+
 ## Status (2026-08-22)
 
 - ✅ Phases 0–2: Knowledge enabled, schema deployed & verified
