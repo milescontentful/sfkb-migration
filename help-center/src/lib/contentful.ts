@@ -26,23 +26,35 @@ export type ArticleSkeleton = {
 };
 export type Article = Entry<ArticleSkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>;
 
+// NOTE (2026-09-23): the content type id below is a placeholder. Miles is loading a custom
+// content model into master; update CONTENT_TYPE + the fields above once it lands.
+const CONTENT_TYPE = "knowledgeArticle";
+
 export async function getArticles(): Promise<Article[]> {
   // ponytail: 1000 is the CDA page max; add paging when the KB passes that.
-  const res = await client.withoutUnresolvableLinks.getEntries<ArticleSkeleton>({
-    content_type: "knowledgeArticle",
-    order: ["fields.title"],
-    limit: 1000,
-  });
-  return res.items;
+  try {
+    const res = await client.withoutUnresolvableLinks.getEntries<ArticleSkeleton>({
+      content_type: CONTENT_TYPE,
+      order: ["fields.title"],
+      limit: 1000,
+    });
+    return res.items;
+  } catch {
+    return []; // content type not there yet → empty site, not a crashed one
+  }
 }
 
 export async function getArticle(slug: string): Promise<Article | null> {
-  const res = await client.withoutUnresolvableLinks.getEntries<ArticleSkeleton>({
-    content_type: "knowledgeArticle",
-    "fields.slug": slug,
-    limit: 1,
-  });
-  return res.items[0] ?? null;
+  try {
+    const res = await client.withoutUnresolvableLinks.getEntries<ArticleSkeleton>({
+      content_type: CONTENT_TYPE,
+      "fields.slug": slug,
+      limit: 1,
+    });
+    return res.items[0] ?? null;
+  } catch {
+    return null;
+  }
 }
 
 // Concept id -> human label, from the Delivery API's read-only taxonomy endpoint.

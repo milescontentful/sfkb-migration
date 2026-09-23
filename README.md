@@ -105,5 +105,7 @@ doesn't exist in single-language orgs.
 - **Run locally:** `cd help-center && npm install && npm run dev` — needs `help-center/.env.local` (ask Miles; never committed)
 - **Search box** → `/api/search` → vector search on the Data 360 index named in `SF_SEARCH_INDEX`
 - **Sitemap** (`/sitemap.xml`) lists every published article — it is the scope of the Salesforce Web Content (Sitemap) connector
-- **Taxonomy:** SF data categories = Contentful taxonomy concepts `sfkb-*` (notation = SF category name), bound to `knowledgeArticle`
+- **Taxonomy:** SF data categories = Contentful taxonomy concepts `sfkb-*` (notation = SF category name) in scheme `cs-sfkb-products`. Bind it to the article type in Miles's custom model when that lands.
+- **Content model:** the space is EMPTY on purpose (2026-09-23) — Miles is loading a custom model into `master`. `docs/contentful-model.json` is the earlier plan, superseded. `help-center/src/lib/contentful.ts` has a placeholder content type id to update.
+- `help-center/scripts/seed-from-salesforce.mjs` — reference plumbing (SF → rich text → CMA upsert), not to be run as-is.
 - Design notes and the config-app knob list: `docs/search-index-notes.md`
