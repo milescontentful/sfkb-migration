@@ -36,15 +36,21 @@ export type SearchHit = {
   title?: string;
 };
 
-// Public Contentful slugs — a hit only becomes a result if a page for it exists on this site.
+// Public Contentful articles — a hit only becomes a result if a page for it exists on this site.
+// Keyed by slug AND by title: after a webhook re-publish, Salesforce gives the article a new version
+// Id, so for the ~15-30 min until the index re-runs the chunk's Id is orphaned in the snapshot. The
+// chunk text still starts with the article title, so the title lookup keeps the link alive.
 // ponytail: one small lookup cached for 60s; fine at demo scale.
-let slugCache: { at: number; slugs: Set<string> } | null = null;
-async function publicSlugs(): Promise<Set<string>> {
-  if (slugCache && Date.now() - slugCache.at < 60_000) return slugCache.slugs;
-  const c = await fetch(`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT ?? "master"}/entries?content_type=article&fields.channelVisibility=Public&select=fields.slug&limit=1000`,
+type PublicIndex = { slugs: Set<string>; slugByTitle: Map<string, string> };
+let pubCache: { at: number; idx: PublicIndex } | null = null;
+const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+async function publicArticles(): Promise<PublicIndex> {
+  if (pubCache && Date.now() - pubCache.at < 60_000) return pubCache.idx;
+  const c = await fetch(`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT ?? "master"}/entries?content_type=article&fields.channelVisibility=Public&select=fields.slug,fields.title&limit=1000`,
     { headers: { Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_TOKEN}` } }).then((r) => r.json()).catch(() => ({ items: [] }));
-  slugCache = { at: Date.now(), slugs: new Set((c.items ?? []).map((e: { fields: { slug: string } }) => e.fields.slug)) };
-  return slugCache.slugs;
+  const items: { fields: { slug: string; title: string } }[] = c.items ?? [];
+  pubCache = { at: Date.now(), idx: { slugs: new Set(items.map((e) => e.fields.slug)), slugByTitle: new Map(items.map((e) => [norm(e.fields.title), e.fields.slug])) } };
+  return pubCache.idx;
 }
 
 export async function GET(req: NextRequest) {
@@ -62,13 +68,13 @@ export async function GET(req: NextRequest) {
     JOIN ${INDEX}_chunk__dlm c ON v.RecordId__c = c.RecordId__c
     LEFT JOIN ssot__KnowledgeArticleVersion__dlm k ON c.SourceRecordId__c = k.ssot__Id__c`;
 
-  const [r, slugs] = await Promise.all([
+  const [r, pub] = await Promise.all([
     fetch(`${SF}/services/data/v62.0/ssot/query-sql`, {
       method: "POST",
       headers: { Authorization: `Bearer ${await sfToken()}`, "Content-Type": "application/json" },
       body: JSON.stringify({ sql }),
     }),
-    publicSlugs(),
+    publicArticles(),
   ]);
   const j = await r.json();
   if (!Array.isArray(j.data)) return NextResponse.json({ error: j }, { status: 502 });
@@ -77,8 +83,12 @@ export async function GET(req: NextRequest) {
   const best = new Map<string, SearchHit>();
   for (const [score, sourceId, chunk, urlName, title] of j.data as [number, string, string, string | null, string | null][]) {
     if (!best.has(sourceId) || best.get(sourceId)!.score < score) {
-      const url = sourceId.startsWith("http") ? sourceId : urlName && slugs.has(urlName) ? `/articles/${urlName}` : undefined;
-      best.set(sourceId, { sourceId, score, snippet: String(chunk).slice(0, 240), url, title: title ?? undefined });
+      const text = String(chunk);
+      const firstLine = text.split("\n")[0];
+      // 1) page URL (future web index) 2) snapshot URL name 3) title match (orphaned chunk during re-index)
+      const slug = urlName && pub.slugs.has(urlName) ? urlName : pub.slugByTitle.get(norm(title ?? firstLine));
+      const url = sourceId.startsWith("http") ? sourceId : slug ? `/articles/${slug}` : undefined;
+      best.set(sourceId, { sourceId, score, snippet: text.slice(0, 240), url, title: title ?? (slug ? firstLine : undefined) });
     }
   }
   // Contentful is the source of truth: only show hits that map to a page on this site.

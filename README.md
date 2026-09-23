@@ -42,10 +42,10 @@ itself starts on the 23rd.
 |---|---|---|
 | Salesforce dev org, 100 published Knowledge articles | URL in `docs/org.md` | You'll get a password-setup email once Miles runs `scripts/invite-team.sh` |
 | Agentforce agent "Brightline Support" | Agentforce Studio in that org | Answers from the KB; verified grounded on 2026-09-13 |
-| Contentful target space `01 - Brightline Solar` | space ID `3m1ne1iyqxvp` | **Empty on purpose** — the app creates the content model live in the demo |
+| Contentful space `01 - ServiceNext` (was Brightline Solar) | space ID `3m1ne1iyqxvp` | **Superseded 2026-09-23:** holds Miles's custom model + 100 harvested articles — see the help-center section below |
 | Contentful App Definition "Salesforce Knowledge Migration" | ID `43KDrwm5xKCtTQV6E93kHD` | Locations: app-config, page, entry-sidebar. Frontend URL is `localhost:3000` until we deploy |
 | Fixtures (offline copy of the 100 articles) | `sf-kb-seed/out/dump/` | 100 articles + categories + 178 HTML files; covers tables, cross-links, code blocks, inline styles, images |
-| Target content model + field mapping | `docs/contentful-model.json` | Two content types; the app's mapping step should reproduce this |
+| Target content model + field mapping | `docs/contentful-model.json` | **Superseded** by Miles's custom model in the space; kept for the field-mapping table |
 | Salesforce Connected App creds | `.env.local` (gitignored) | Ask Miles; the app's settings screen takes these |
 
 **The one thing to know about the source data:** this Developer Edition org caps Knowledge
@@ -97,15 +97,33 @@ needed `deploymentStatus` + `sharingModel`; bulk CSV rows containing CRLF fail
 LF-mode ingest jobs; `publish-drafts.apex` referenced `IsMasterLanguage`, which
 doesn't exist in single-language orgs.
 
-## Help center site (added 2026-09-23)
+## Help center site + search (state as of 2026-09-23 night)
 
-`help-center/` is the public Next.js site: Contentful is the source of truth, Salesforce Data 360 is the search engine.
+`help-center/` is the public Next.js site: **Contentful is the source of truth, Salesforce Data 360 is the search engine.**
 
 - **Live:** https://servicenext.colorfuldemo.com (Vercel project `servicenext`, team `contentful-apps`)
 - **Run locally:** `cd help-center && npm install && npm run dev` — needs `help-center/.env.local` (ask Miles; never committed)
-- **Search box** → `/api/search` → vector search on the Data 360 index named in `SF_SEARCH_INDEX`
-- **Sitemap** (`/sitemap.xml`) lists every published article — it is the scope of the Salesforce Web Content (Sitemap) connector
-- **Taxonomy:** SF data categories = Contentful taxonomy concepts `sfkb-*` (notation = SF category name) in scheme `cs-sfkb-products`. Bind it to the article type in Miles's custom model when that lands.
-- **Content model:** the space is EMPTY on purpose (2026-09-23) — Miles is loading a custom model into `master`. `docs/contentful-model.json` is the earlier plan, superseded. `help-center/src/lib/contentful.ts` has a placeholder content type id to update.
-- `help-center/scripts/seed-from-salesforce.mjs` — reference plumbing (SF → rich text → CMA upsert), not to be run as-is.
-- Design notes and the config-app knob list: `docs/search-index-notes.md`
+- **Content:** space `3m1ne1iyqxvp` ("01 - ServiceNext"), Miles's custom model; the site reads type `article`, Public channel only. 100 articles were harvested from Salesforce on 2026-09-23 (entries `sf-<KnowledgeArticleId>`), plus `kbArticleResetPassword`.
+- **Taxonomy:** SF data categories = concept scheme `cs-sfkb-products` (`sfkb-*` concepts, notation = SF category name), bound to `article`.
+- Design notes, measured timings, config-app knobs: `docs/search-index-notes.md`
+
+### How a publish becomes searchable (measured)
+1. **Contentful publish → webhook** "Search index sync (Salesforce)" → `POST /api/webhooks/contentful` on the site → the article is flattened to HTML and written into Salesforce Knowledge (`UrlName` = slug; existing slug = new version, new slug = new article). Seconds.
+2. **Knowledge → Data 360 snapshot** (`ssot__KnowledgeArticleVersion__dlm`): stream `Knowledge_kav_Home`, platform schedule, every ~10–15 min. No API to run it early for CRM streams.
+3. **Snapshot → search index `KA_Brightline_KB`**: change-driven, no timer of its own, **no public API to trigger it**. Observed: did not run within 13 min of a stream refresh; the UI **Rebuild** (Data 360 app → Search Index → KA_Brightline_KB → Rebuild) took 5 min for 100 articles.
+4. **Search box** → `/api/search` → Data 360 `vector_search` → chunks joined to the snapshot for URL name + title → **only hits that map to a public Contentful article are shown**.
+
+Rule of thumb for a demo: publish **≥30 min before** it must be searchable, or publish, wait for the next stream run (~15 min), then click Rebuild (5 min).
+
+### Demo-day checklist
+- [ ] **Webhook secret in Vercel is per-deployment right now.** Run `bash help-center/vercel-env.sh` once (adds all env vars permanently + deploys). Until then, any other deploy silently breaks the webhook (401s).
+- [ ] **Knowledge is at its Dev Edition cap (100/100).** Every *brand-new* article needs a free slot or the webhook gets "Article limit exceeded". Free slots first: `bash scripts/free-knowledge-slots.sh <slug> [<slug>...]` (also unpublish those in Contentful). Edits to existing articles need no slot.
+- [ ] After publishing: check Contentful → Settings → Webhooks → call log (200 = written to Knowledge), then Data 360 → Search Index → `KA_Brightline_KB` → Process History / Rebuild.
+- [ ] Editing an existing article gives it a new Salesforce version Id. Between the next stream run and the index re-run, its old chunks are orphaned; the site falls back to matching the chunk's title so the link survives.
+
+### Files
+- `help-center/src/app/api/webhooks/contentful/route.ts` — the sync (publish → Knowledge; unpublish → archive; `?dry=1` previews)
+- `help-center/src/app/api/search/route.ts` — the search (vector search + snapshot join + Contentful-only filter)
+- `help-center/src/components/RichText.tsx` — renders every embeddable block in `bodyCopy`
+- `help-center/scripts/seed-from-salesforce.mjs` — reference plumbing only
+- `scripts/free-knowledge-slots.sh`, `scripts/invite-team-3.sh`
