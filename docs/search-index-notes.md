@@ -59,8 +59,8 @@ Honest limit: this is retrieval tuning (filters, thresholds, counts, reordering)
 ## Taxonomy: SF data categories → Contentful concepts (done 2026-09-23)
 - SF side: one data category group **Products**, 10 categories, every one of the 100 articles carries exactly one.
 - Contentful side: 10 org-level taxonomy **concepts** `sfkb-partner-api … sfkb-profile`, label = category name with spaces, **notation = exact SF DataCategoryName** (the migration's matching key).
-- Bound directly to `knowledgeArticle` via `metadata.taxonomy` (10 concept links). Entries carry them in `metadata.concepts`.
-- **No concept scheme**: the org is at its cap of 20 schemes (`"You have reached the maximum number of concept schemes"`). Freeing one means deleting another demo's scheme — Miles's call. Concepts work without one; editors just don't see a "Products" heading.
+- Grouped under concept scheme **`cs-sfkb-products`** "Products (Salesforce KB)"; `knowledgeArticle` is bound to the SCHEME via `metadata.taxonomy`, so any concept added to the scheme later is automatically allowed on articles. Entries carry concepts in `metadata.concepts`.
+- The org was at its cap of 20 schemes; on 2026-09-23 Miles had four stale ones deleted (Marketing asset, Event type, Region, Owners — 38 concepts, none shared) to make room. 16 + this one = 17 of 20 now.
 - `knowledgeCategory` content type and the `categories` field were retired (omit → remove → publish).
 - Site reads labels from the Delivery API `…/taxonomy/concepts` endpoint (`conceptLabels()` in `help-center/src/lib/contentful.ts`).
 
