@@ -1,34 +1,101 @@
 {
   "contentTypes": [
-    { "id": "knowledgeArticle", "name": "Knowledge Article", "displayField": "title",
+    {
+      "id": "knowledgeArticle",
+      "name": "Knowledge Article",
+      "displayField": "title",
       "fields": [
-        { "id": "title", "type": "Symbol", "localized": true, "required": true },
-        { "id": "slug", "type": "Symbol", "required": true, "validations": [{ "unique": true }] },
-        { "id": "summary", "type": "Text", "localized": true },
-        { "id": "articleType", "type": "Symbol", "validations": [{ "in": ["FAQ", "Procedure", "News"] }] },
-        { "id": "question", "type": "RichText", "localized": true },
-        { "id": "body", "type": "RichText", "localized": true },
-        { "id": "audience", "type": "Symbol" },
-        { "id": "categories", "type": "Array", "items": { "type": "Link", "linkType": "Entry", "validations": [{ "linkContentType": ["knowledgeCategory"] }] } },
-        { "id": "sfArticleId", "type": "Symbol", "validations": [{ "unique": true }] },
-        { "id": "sfVersionNumber", "type": "Integer" },
-        { "id": "sfLastPublished", "type": "Date" }
-      ] },
-    { "id": "knowledgeCategory", "name": "Knowledge Category", "displayField": "name",
-      "fields": [
-        { "id": "name", "type": "Symbol", "required": true },
-        { "id": "groupName", "type": "Symbol" },
-        { "id": "parent", "type": "Link", "linkType": "Entry", "validations": [{ "linkContentType": ["knowledgeCategory"] }] },
-        { "id": "sfCategoryName", "type": "Symbol", "validations": [{ "unique": true }] }
-      ] }
+        {
+          "id": "title",
+          "type": "Symbol",
+          "localized": true,
+          "required": true
+        },
+        {
+          "id": "slug",
+          "type": "Symbol",
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ]
+        },
+        {
+          "id": "summary",
+          "type": "Text",
+          "localized": true
+        },
+        {
+          "id": "articleType",
+          "type": "Symbol",
+          "validations": [
+            {
+              "in": [
+                "FAQ",
+                "Procedure",
+                "News"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "question",
+          "type": "RichText",
+          "localized": true
+        },
+        {
+          "id": "body",
+          "type": "RichText",
+          "localized": true
+        },
+        {
+          "id": "audience",
+          "type": "Symbol"
+        },
+        {
+          "id": "sfArticleId",
+          "type": "Symbol",
+          "validations": [
+            {
+              "unique": true
+            }
+          ]
+        },
+        {
+          "id": "sfVersionNumber",
+          "type": "Integer"
+        },
+        {
+          "id": "sfLastPublished",
+          "type": "Date"
+        }
+      ]
+    }
   ],
   "fieldMapping": {
     "_comment": "Salesforce Knowledge__kav field -> Contentful field, per record type. This is what the app's mapping UI produces.",
-    "FAQ":       { "Question__c": "question", "Answer__c": "body" },
-    "Procedure": { "Procedure_Body__c": "body", "Procedure_Audience__c": "audience" },
-    "News":      { "Abstract__c": "summary", "Body__c": "body" },
-    "_common":   { "Title": "title", "UrlName": "slug", "Summary": "summary", "RecordType.DeveloperName": "articleType",
-                   "KnowledgeArticleId": "sfArticleId", "VersionNumber": "sfVersionNumber", "LastPublishedDate": "sfLastPublished" }
+    "FAQ": {
+      "Question__c": "question",
+      "Answer__c": "body"
+    },
+    "Procedure": {
+      "Procedure_Body__c": "body",
+      "Procedure_Audience__c": "audience"
+    },
+    "News": {
+      "Abstract__c": "summary",
+      "Body__c": "body"
+    },
+    "_common": {
+      "Title": "title",
+      "UrlName": "slug",
+      "Summary": "summary",
+      "RecordType.DeveloperName": "articleType",
+      "KnowledgeArticleId": "sfArticleId",
+      "VersionNumber": "sfVersionNumber",
+      "LastPublishedDate": "sfLastPublished"
+    }
   },
   "transformRules": [
     "HTML -> Rich Text via contentful-html-rich-text-converter; strip <span style>, <font>; <pre> -> code block; <table> -> Rich Text table",
@@ -36,5 +103,20 @@
     "<a href='/articles/Knowledge/{UrlName}'> -> entry-hyperlink to the entry with matching slug (second pass after all entries exist)",
     "Data categories -> upsert knowledgeCategory entries (parent chain from group XML), link on article",
     "Upsert key: sfArticleId; publish in Contentful iff PublishStatus=Online"
-  ]
+  ],
+  "taxonomy": {
+    "note": "Data categories map to Contentful taxonomy CONCEPTS (org-level), bound directly to knowledgeArticle via metadata.taxonomy — no concept scheme because the org is at its scheme limit (2026-09-23). Concept id = sfkb-<category-lowercase-dashed>; concept notation = exact SF DataCategoryName; entries carry them in metadata.concepts.",
+    "conceptIds": [
+      "sfkb-partner-api",
+      "sfkb-scheduling",
+      "sfkb-financing",
+      "sfkb-reports",
+      "sfkb-alerts",
+      "sfkb-payments",
+      "sfkb-invoices",
+      "sfkb-permits",
+      "sfkb-login",
+      "sfkb-profile"
+    ]
+  }
 }

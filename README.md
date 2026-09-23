@@ -96,3 +96,14 @@ Gotchas hit & fixed (already patched in this repo): `Knowledge__kav` object XML
 needed `deploymentStatus` + `sharingModel`; bulk CSV rows containing CRLF fail
 LF-mode ingest jobs; `publish-drafts.apex` referenced `IsMasterLanguage`, which
 doesn't exist in single-language orgs.
+
+## Help center site (added 2026-09-23)
+
+`help-center/` is the public Next.js site: Contentful is the source of truth, Salesforce Data 360 is the search engine.
+
+- **Live:** https://servicenext.colorfuldemo.com (Vercel project `servicenext`, team `contentful-apps`)
+- **Run locally:** `cd help-center && npm install && npm run dev` — needs `help-center/.env.local` (ask Miles; never committed)
+- **Search box** → `/api/search` → vector search on the Data 360 index named in `SF_SEARCH_INDEX`
+- **Sitemap** (`/sitemap.xml`) lists every published article — it is the scope of the Salesforce Web Content (Sitemap) connector
+- **Taxonomy:** SF data categories = Contentful taxonomy concepts `sfkb-*` (notation = SF category name), bound to `knowledgeArticle`
+- Design notes and the config-app knob list: `docs/search-index-notes.md`
