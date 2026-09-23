@@ -33,24 +33,18 @@ export type SearchHit = {
   score: number;
   snippet: string;
   url?: string; // set when the hit maps to a page on this site
+  title?: string;
 };
 
-// Knowledge version Id → this site's article URL, for articles the webhook pushed into Knowledge.
-// A Knowledge article maps to a page when its UrlName equals a public Contentful slug.
-// ponytail: two small lookups cached for 60s; fine at demo scale.
-let urlMap: { at: number; map: Map<string, string> } | null = null;
-async function knowledgeUrlMap(token: string): Promise<Map<string, string>> {
-  if (urlMap && Date.now() - urlMap.at < 60_000) return urlMap.map;
-  const slugs = new Set<string>();
+// Public Contentful slugs — a hit only becomes a result if a page for it exists on this site.
+// ponytail: one small lookup cached for 60s; fine at demo scale.
+let slugCache: { at: number; slugs: Set<string> } | null = null;
+async function publicSlugs(): Promise<Set<string>> {
+  if (slugCache && Date.now() - slugCache.at < 60_000) return slugCache.slugs;
   const c = await fetch(`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT ?? "master"}/entries?content_type=article&fields.channelVisibility=Public&select=fields.slug&limit=1000`,
     { headers: { Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_TOKEN}` } }).then((r) => r.json()).catch(() => ({ items: [] }));
-  for (const e of c.items ?? []) slugs.add(e.fields.slug);
-  const q = encodeURIComponent("SELECT Id, UrlName FROM Knowledge__kav WHERE PublishStatus='Online'");
-  const k = await fetch(`${SF}/services/data/v62.0/query?q=${q}`, { headers: { Authorization: `Bearer ${token}` } }).then((r) => r.json()).catch(() => ({ records: [] }));
-  const map = new Map<string, string>();
-  for (const r of k.records ?? []) if (slugs.has(r.UrlName)) map.set(r.Id, `/articles/${r.UrlName}`);
-  urlMap = { at: Date.now(), map };
-  return map;
+  slugCache = { at: Date.now(), slugs: new Set((c.items ?? []).map((e: { fields: { slug: string } }) => e.fields.slug)) };
+  return slugCache.slugs;
 }
 
 export async function GET(req: NextRequest) {
@@ -60,32 +54,37 @@ export async function GET(req: NextRequest) {
   if (!q) return NextResponse.json({ hits: [] });
 
   // Data 360 SQL. Ask for extra chunks (k*3) because several chunks can come from one article;
-  // we collapse to one hit per source below.
-  const sql = `SELECT v.score__c, c.SourceRecordId__c, c.Chunk__c
+  // we collapse to one hit per source below. The join to Data 360's own copy of Knowledge gives
+  // each chunk its article's URL name and title from the SAME snapshot the index was built from,
+  // so Salesforce version churn (the webhook replaces versions) can never orphan a hit.
+  const sql = `SELECT v.score__c, c.SourceRecordId__c, c.Chunk__c, k.ssot__URL__c, k.ssot__Name__c
     FROM vector_search(table(${INDEX}_index__dlm), '${q.replace(/'/g, "''")}', '', ${k * 3}) v
-    JOIN ${INDEX}_chunk__dlm c ON v.RecordId__c = c.RecordId__c`;
+    JOIN ${INDEX}_chunk__dlm c ON v.RecordId__c = c.RecordId__c
+    LEFT JOIN ssot__KnowledgeArticleVersion__dlm k ON c.SourceRecordId__c = k.ssot__Id__c`;
 
-  const token = await sfToken();
-  const [r, urls] = await Promise.all([
+  const [r, slugs] = await Promise.all([
     fetch(`${SF}/services/data/v62.0/ssot/query-sql`, {
       method: "POST",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      headers: { Authorization: `Bearer ${await sfToken()}`, "Content-Type": "application/json" },
       body: JSON.stringify({ sql }),
     }),
-    knowledgeUrlMap(token),
+    publicSlugs(),
   ]);
   const j = await r.json();
   if (!Array.isArray(j.data)) return NextResponse.json({ error: j }, { status: 502 });
 
   // One hit per source, best score wins, then apply the knobs.
   const best = new Map<string, SearchHit>();
-  for (const [score, sourceId, chunk] of j.data as [number, string, string][]) {
+  for (const [score, sourceId, chunk, urlName, title] of j.data as [number, string, string, string | null, string | null][]) {
     if (!best.has(sourceId) || best.get(sourceId)!.score < score) {
-      const url = sourceId.startsWith("http") ? sourceId : urls.get(sourceId);
-      best.set(sourceId, { sourceId, score, snippet: String(chunk).slice(0, 240), url });
+      const url = sourceId.startsWith("http") ? sourceId : urlName && slugs.has(urlName) ? `/articles/${urlName}` : undefined;
+      best.set(sourceId, { sourceId, score, snippet: String(chunk).slice(0, 240), url, title: title ?? undefined });
     }
   }
+  // Contentful is the source of truth: only show hits that map to a page on this site.
+  // Index rows with no Contentful counterpart (legacy Salesforce fixtures) are dropped.
   const hits = [...best.values()]
+    .filter((h) => h.url)
     .filter((h) => h.score >= minScore)
     .sort((a, b) => b.score - a.score)
     .slice(0, k);

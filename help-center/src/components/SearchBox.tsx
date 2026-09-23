@@ -37,14 +37,16 @@ export default function SearchBox() {
           {hits.length === 0 && <li className="p-4 text-sm text-zinc-500">No matches.</li>}
           {hits.map((h) => {
             const [first, ...rest] = h.snippet.split("\n");
+            const title = h.title ?? first;
+            const body = h.title ? h.snippet : rest.join(" ");
             return (
               <li key={h.sourceId} className="p-4">
                 {h.url ? (
-                  <a href={h.url} className="font-medium text-amber-700 hover:underline">{first}</a>
+                  <a href={h.url} className="font-medium text-amber-700 hover:underline">{title}</a>
                 ) : (
-                  <span className="font-medium">{first}</span>
+                  <span className="font-medium">{title}</span>
                 )}
-                <p className="mt-1 line-clamp-2 text-sm text-zinc-600">{rest.join(" ")}</p>
+                <p className="mt-1 line-clamp-2 text-sm text-zinc-600">{body}</p>
                 <p className="mt-1 text-xs text-zinc-400">match {Math.round(h.score * 100)}%</p>
               </li>
             );
