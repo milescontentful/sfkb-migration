@@ -74,3 +74,14 @@ Honest limit: this is retrieval tuning (filters, thresholds, counts, reordering)
 - Observed 22:48Z: first real publish created `ka0ak000002gOBFAA2` with categories Login, Profile.
 - Dev Edition cap facts (observed): 100 articles incl. archived; archiving does NOT free a slot; delete the master `KnowledgeArticle` (kA0), not the version; then empty the recycle bin; the counter lags ~5–10 s (first create after the delete still failed, retry succeeded).
 - ⚠ Webhook secret reached prod via `vercel deploy -e` (per-deployment). Run `help-center/vercel-env.sh` once to make it permanent.
+
+## Measured 2026-09-23 evening: publish → searchable
+| Hop | Observed |
+|---|---|
+| Contentful publish → webhook → Knowledge write | seconds (100 publishes, 99 ok + 1 cap error) |
+| Knowledge → Data 360 snapshot (`ssot__KnowledgeArticleVersion__dlm`) | stream `Knowledge_kav_Home` runs every ~10–15 min (23:09 run processed 198 = 99 removed + 99 added) |
+| Snapshot → search index `KA_Brightline_KB` | did NOT run on its own (last self-run 09-13); manual **Rebuild** 23:12 → READY 23:17 = 5 min for 100 articles / 936 index rows |
+| End to end for "Resetting your password" | published 22:48Z → searchable 23:17Z = 29 min, only because of the manual rebuild |
+
+- Webhook "new-version" writes replace the Online version IN PLACE with a new `ka0` Id (VersionNumber and LastPublishedDate unchanged; LastModifiedDate moves). The index keys chunks by that Id, so after a stream refresh every pre-existing chunk is orphaned until the index re-runs → the site showed **zero results for ~8 min** (23:09–23:17). Production fix options: (a) trigger the index run right after the stream (no public API found — the UI Rebuild is Aura action `SemanticSearch.refreshSearchIndex`), (b) Ingestion API path (available in this org's Setup menu), (c) let the site fall back to snippet-only results when a chunk can't be resolved.
+- Search route now joins chunks → snapshot for URL name + title, and only returns hits whose URL name is a public Contentful slug. Verified: "how do I reset my password" → 1 linked hit (85%), billing → 3 linked hits, inverter → 3 linked hits; 100/100 articles indexed and aligned, 0 orphan chunks.
