@@ -66,3 +66,11 @@ Honest limit: this is retrieval tuning (filters, thresholds, counts, reordering)
 
 ## Prior art inside Contentful
 - Confluence: "Agentforce + Contentful Dreamforce PoC — Architecture Spec" (John Peden; Joe Meersman built the original Agentforce grounding repo). Their approach ≈ Method 2 (Data 360 reads Contentful metadata). Slack: #tmp-agentforce-web-poc.
+
+## Webhook → Knowledge → index (LIVE 2026-09-23)
+- Contentful webhook "Search index sync (Salesforce)" (`24yPZnjjUsxilzIPi2I4Y2`) → `POST /api/webhooks/contentful` on the Vercel site. Article entries only; publish/unpublish/delete/archive; `x-webhook-secret` header.
+- Publish: fetch published entry (Public channel only) → one HTML doc (Keywords + Topics lines, then body with embedded entries as text) → upsert `Knowledge__kav` (UrlName = slug, News record type, data categories = concept notations) → publish. Unpublish → Archived. `?dry=1` previews without writing. `sink()` is the swap point for the Ingestion API later.
+- Search hits whose Knowledge UrlName matches a public Contentful slug link to `/articles/<slug>`.
+- Observed 22:48Z: first real publish created `ka0ak000002gOBFAA2` with categories Login, Profile.
+- Dev Edition cap facts (observed): 100 articles incl. archived; archiving does NOT free a slot; delete the master `KnowledgeArticle` (kA0), not the version; then empty the recycle bin; the counter lags ~5–10 s (first create after the delete still failed, retry succeeded).
+- ⚠ Webhook secret reached prod via `vercel deploy -e` (per-deployment). Run `help-center/vercel-env.sh` once to make it permanent.
