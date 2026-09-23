@@ -1,12 +1,12 @@
 "use client";
 // Search box for the help center. Talks only to our own /api/search route.
-// `articlesBySfId` lets a Salesforce hit link to the Contentful page for that article.
+// Today the index is the Salesforce Knowledge one, whose hits are Salesforce records, so results
+// show title + snippet without a link. Once the index is built from this site's sitemap, each hit's
+// sourceId is a page URL and becomes the link.
 import { useEffect, useState } from "react";
 import type { SearchHit } from "@/app/api/search/route";
 
-type Props = { articlesBySfId: Record<string, { slug: string; title: string }> };
-
-export default function SearchBox({ articlesBySfId }: Props) {
+export default function SearchBox() {
   const [q, setQ] = useState("");
   const [hits, setHits] = useState<SearchHit[] | null>(null);
   const [busy, setBusy] = useState(false);
@@ -28,7 +28,7 @@ export default function SearchBox({ articlesBySfId }: Props) {
       <input
         value={q}
         onChange={(e) => setQ(e.target.value)}
-        placeholder="Ask a question, e.g. why is my bill higher than the estimate?"
+        placeholder="Ask a question, e.g. how do I reset my password?"
         className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 text-base shadow-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
       />
       {busy && <p className="mt-2 text-sm text-zinc-500">Searching…</p>}
@@ -36,17 +36,16 @@ export default function SearchBox({ articlesBySfId }: Props) {
         <ul className="mt-3 divide-y divide-zinc-200 rounded-xl border border-zinc-200 bg-white">
           {hits.length === 0 && <li className="p-4 text-sm text-zinc-500">No matches.</li>}
           {hits.map((h) => {
-            const a = articlesBySfId[h.sourceId];
-            const href = h.sourceId.startsWith("http") ? h.sourceId : a ? `/articles/${a.slug}` : undefined;
-            const title = a?.title ?? h.snippet.split("\n")[0];
+            const isUrl = h.sourceId.startsWith("http");
+            const [first, ...rest] = h.snippet.split("\n");
             return (
               <li key={h.sourceId} className="p-4">
-                {href ? (
-                  <a href={href} className="font-medium text-amber-700 hover:underline">{title}</a>
+                {isUrl ? (
+                  <a href={h.sourceId} className="font-medium text-amber-700 hover:underline">{first}</a>
                 ) : (
-                  <span className="font-medium">{title}</span>
+                  <span className="font-medium">{first}</span>
                 )}
-                <p className="mt-1 text-sm text-zinc-600">{h.snippet}</p>
+                <p className="mt-1 line-clamp-2 text-sm text-zinc-600">{rest.join(" ")}</p>
                 <p className="mt-1 text-xs text-zinc-400">match {Math.round(h.score * 100)}%</p>
               </li>
             );
