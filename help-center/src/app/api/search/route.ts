@@ -32,7 +32,26 @@ export type SearchHit = {
   sourceId: string; // Knowledge article Id today; page URL once the web connector is live
   score: number;
   snippet: string;
+  url?: string; // set when the hit maps to a page on this site
 };
+
+// Knowledge version Id → this site's article URL, for articles the webhook pushed into Knowledge.
+// A Knowledge article maps to a page when its UrlName equals a public Contentful slug.
+// ponytail: two small lookups cached for 60s; fine at demo scale.
+let urlMap: { at: number; map: Map<string, string> } | null = null;
+async function knowledgeUrlMap(token: string): Promise<Map<string, string>> {
+  if (urlMap && Date.now() - urlMap.at < 60_000) return urlMap.map;
+  const slugs = new Set<string>();
+  const c = await fetch(`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT ?? "master"}/entries?content_type=article&fields.channelVisibility=Public&select=fields.slug&limit=1000`,
+    { headers: { Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_TOKEN}` } }).then((r) => r.json()).catch(() => ({ items: [] }));
+  for (const e of c.items ?? []) slugs.add(e.fields.slug);
+  const q = encodeURIComponent("SELECT Id, UrlName FROM Knowledge__kav WHERE PublishStatus='Online'");
+  const k = await fetch(`${SF}/services/data/v62.0/query?q=${q}`, { headers: { Authorization: `Bearer ${token}` } }).then((r) => r.json()).catch(() => ({ records: [] }));
+  const map = new Map<string, string>();
+  for (const r of k.records ?? []) if (slugs.has(r.UrlName)) map.set(r.Id, `/articles/${r.UrlName}`);
+  urlMap = { at: Date.now(), map };
+  return map;
+}
 
 export async function GET(req: NextRequest) {
   const q = req.nextUrl.searchParams.get("q")?.trim();
@@ -46,11 +65,15 @@ export async function GET(req: NextRequest) {
     FROM vector_search(table(${INDEX}_index__dlm), '${q.replace(/'/g, "''")}', '', ${k * 3}) v
     JOIN ${INDEX}_chunk__dlm c ON v.RecordId__c = c.RecordId__c`;
 
-  const r = await fetch(`${SF}/services/data/v62.0/ssot/query-sql`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${await sfToken()}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ sql }),
-  });
+  const token = await sfToken();
+  const [r, urls] = await Promise.all([
+    fetch(`${SF}/services/data/v62.0/ssot/query-sql`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ sql }),
+    }),
+    knowledgeUrlMap(token),
+  ]);
   const j = await r.json();
   if (!Array.isArray(j.data)) return NextResponse.json({ error: j }, { status: 502 });
 
@@ -58,7 +81,8 @@ export async function GET(req: NextRequest) {
   const best = new Map<string, SearchHit>();
   for (const [score, sourceId, chunk] of j.data as [number, string, string][]) {
     if (!best.has(sourceId) || best.get(sourceId)!.score < score) {
-      best.set(sourceId, { sourceId, score, snippet: String(chunk).slice(0, 240) });
+      const url = sourceId.startsWith("http") ? sourceId : urls.get(sourceId);
+      best.set(sourceId, { sourceId, score, snippet: String(chunk).slice(0, 240), url });
     }
   }
   const hits = [...best.values()]

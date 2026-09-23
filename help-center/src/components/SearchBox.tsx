@@ -36,12 +36,11 @@ export default function SearchBox() {
         <ul className="mt-3 divide-y divide-zinc-200 rounded-xl border border-zinc-200 bg-white">
           {hits.length === 0 && <li className="p-4 text-sm text-zinc-500">No matches.</li>}
           {hits.map((h) => {
-            const isUrl = h.sourceId.startsWith("http");
             const [first, ...rest] = h.snippet.split("\n");
             return (
               <li key={h.sourceId} className="p-4">
-                {isUrl ? (
-                  <a href={h.sourceId} className="font-medium text-amber-700 hover:underline">{first}</a>
+                {h.url ? (
+                  <a href={h.url} className="font-medium text-amber-700 hover:underline">{first}</a>
                 ) : (
                   <span className="font-medium">{first}</span>
                 )}
