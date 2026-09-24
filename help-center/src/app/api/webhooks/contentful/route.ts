@@ -25,8 +25,8 @@ const cda = createClient({
 
 // ---------- Salesforce helpers ----------
 let cached: { token: string; exp: number } | null = null;
-async function sfToken() {
-  if (cached && Date.now() < cached.exp) return cached.token;
+async function sfToken(force = false) {
+  if (!force && cached && Date.now() < cached.exp) return cached.token;
   const r = await fetch(`${SF}/services/oauth2/token`, {
     method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({ grant_type: "client_credentials", client_id: process.env.SF_CLIENT_ID!, client_secret: process.env.SF_CLIENT_SECRET! }),
@@ -35,8 +35,11 @@ async function sfToken() {
   cached = { token: j.access_token, exp: Date.now() + 50 * 60 * 1000 };
   return j.access_token;
 }
-async function sf(path: string, init: RequestInit = {}) {
+// Salesforce can expire a session before our 50-min cache does (seen 2026-09-24: every call 401
+// INVALID_SESSION_ID). On 401, fetch a fresh token and retry once.
+async function sf(path: string, init: RequestInit = {}, retry = true): Promise<any> {
   const r = await fetch(`${API}${path}`, { ...init, headers: { Authorization: `Bearer ${await sfToken()}`, "Content-Type": "application/json", ...(init.headers ?? {}) } });
+  if (r.status === 401 && retry) { await sfToken(true); return sf(path, init, false); }
   const text = await r.text(); const body = text ? JSON.parse(text) : null;
   if (!r.ok) throw new Error(`SF ${init.method ?? "GET"} ${path} → ${r.status} ${text.slice(0, 300)}`);
   return body;
@@ -119,6 +122,24 @@ async function retire(slug: string) {
   return { sfVersionId: online[0].Id, action: "archived" };
 }
 
+// Contentful is the source of truth. Unpublish/delete webhooks arrive WITHOUT fields (a DeletedEntry),
+// so instead of guessing the slug we reconcile: every Online Knowledge article whose UrlName is not
+// a currently-published Public Contentful slug gets archived. Idempotent; archive is reversible.
+// ponytail: archived articles still count toward the Dev Edition cap — scripts/purge-archived-knowledge.sh
+// (run by a human) does the irreversible delete + recycle-bin empty.
+async function reconcile(dry: boolean) {
+  const slugs = new Set<string>();
+  for (let skip = 0; ; skip += 1000) {
+    const page = await cda.getEntries({ content_type: "article", "fields.channelVisibility": "Public", select: ["fields.slug"], limit: 1000, skip });
+    for (const e of page.items) slugs.add((e.fields as { slug: string }).slug);
+    if (page.items.length < 1000) break;
+  }
+  const online = await soql(`SELECT Id, UrlName, Title FROM Knowledge__kav WHERE PublishStatus='Online'`);
+  const stale = online.filter((r) => !slugs.has(r.UrlName));
+  if (!dry) for (const r of stale) await sf(`/knowledgeManagement/articleVersions/masterVersions/${r.Id}`, { method: "PATCH", body: JSON.stringify({ publishStatus: "Archived" }) });
+  return { action: dry ? "reconcile-dry" : "reconciled", contentfulPublic: slugs.size, knowledgeOnline: online.length, archived: stale.length, sample: stale.slice(0, 5).map((r) => r.UrlName) };
+}
+
 // ---------- Route ----------
 export async function POST(req: NextRequest) {
   if (req.headers.get("x-webhook-secret") !== process.env.CONTENTFUL_WEBHOOK_SECRET) return NextResponse.json({ error: "bad secret" }, { status: 401 });
@@ -139,9 +160,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ entryId, topic, slug: a.slug, ...(await sink(a)) });
     }
     if (/unpublish$|delete$|archive$/i.test(topic)) {
-      const slug = body?.fields?.slug?.["en-US"] ?? (await cda.getEntry(entryId).then((e: any) => e.fields.slug).catch(() => undefined));
-      if (!slug) return NextResponse.json({ entryId, topic, action: "no-slug" });
-      return NextResponse.json({ entryId, topic, slug, ...(dry ? { dry: true } : await retire(slug)) });
+      return NextResponse.json({ entryId, topic, ...(await reconcile(dry)) });
     }
     return NextResponse.json({ entryId, topic, action: "ignored-topic" });
   } catch (e: any) {

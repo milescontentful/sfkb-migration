@@ -10,9 +10,10 @@ const SF = process.env.SF_DOMAIN!.replace(/\/$/, "");
 const INDEX = process.env.SF_SEARCH_INDEX ?? "KA_Brightline_KB";
 
 // ponytail: token cached in module memory; fine on Vercel (each instance re-fetches once).
+// Salesforce may expire it early (INVALID_SESSION_ID): on a 401 we refetch once and retry.
 let cached: { token: string; exp: number } | null = null;
-async function sfToken(): Promise<string> {
-  if (cached && Date.now() < cached.exp) return cached.token;
+async function sfToken(force = false): Promise<string> {
+  if (!force && cached && Date.now() < cached.exp) return cached.token;
   const r = await fetch(`${SF}/services/oauth2/token`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -68,14 +69,13 @@ export async function GET(req: NextRequest) {
     JOIN ${INDEX}_chunk__dlm c ON v.RecordId__c = c.RecordId__c
     LEFT JOIN ssot__KnowledgeArticleVersion__dlm k ON c.SourceRecordId__c = k.ssot__Id__c`;
 
-  const [r, pub] = await Promise.all([
-    fetch(`${SF}/services/data/v62.0/ssot/query-sql`, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${await sfToken()}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ sql }),
-    }),
-    publicArticles(),
-  ]);
+  const query = async (token: string) => fetch(`${SF}/services/data/v62.0/ssot/query-sql`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ sql }),
+  });
+  let [r, pub] = await Promise.all([query(await sfToken()), publicArticles()]);
+  if (r.status === 401) r = await query(await sfToken(true));
   const j = await r.json();
   if (!Array.isArray(j.data)) return NextResponse.json({ error: j }, { status: 502 });
 
