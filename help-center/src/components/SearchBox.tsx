@@ -47,7 +47,7 @@ export default function SearchBox() {
                   <span className="font-medium">{title}</span>
                 )}
                 <p className="mt-1 line-clamp-2 text-sm text-zinc-600">{body}</p>
-                <p className="mt-1 text-xs text-zinc-400">match {Math.round(h.score * 100)}%</p>
+                <p className="mt-1 text-xs text-zinc-400">{h.source === "contentful" ? "keyword match" : `match ${Math.round(h.score * 100)}%`}</p>
               </li>
             );
           })}

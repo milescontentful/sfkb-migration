@@ -35,7 +35,30 @@ export type SearchHit = {
   snippet: string;
   url?: string; // set when the hit maps to a page on this site
   title?: string;
+  source?: "data360" | "contentful"; // which engine answered
 };
+
+// Fallback engine: Contentful's own full-text search over published Public articles.
+// Used when the Data 360 index has no Contentful-backed hit for the query (e.g. the index has not
+// caught up with a publish yet). Keyword match, no meaning-based ranking — good enough to never
+// show an empty box for content that exists.
+async function contentfulSearch(q: string, k: number): Promise<SearchHit[]> {
+  const base = `https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT ?? "master"}/entries?content_type=article&fields.channelVisibility=Public&select=sys.id,fields.title,fields.slug,fields.summary&limit=${k}`;
+  const run = async (term: string) => (await fetch(`${base}&query=${encodeURIComponent(term)}`, { headers: { Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_TOKEN}` } }).then((r) => r.json()).catch(() => ({ items: [] }))).items ?? [];
+  // Contentful's `query` needs every word to appear. Try the whole phrase, then each meaningful
+  // word's stem (longest first, so "authenticate" matches "authenticating"), merging results.
+  const STOP = new Set(["the", "and", "with", "how", "what", "why", "does", "can", "for", "my", "do", "i", "a", "an", "to", "of", "in", "on", "is", "it"]);
+  const words = q.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length >= 3 && !STOP.has(w)).sort((a, b) => b.length - a.length);
+  const stems = words.map((w) => (w.length > 6 ? w.slice(0, Math.max(4, w.length - 3)) : w));
+  const seen = new Map<string, SearchHit>();
+  for (const term of [q, ...stems]) {
+    if (seen.size >= k) break;
+    for (const e of await run(term) as { sys: { id: string }; fields: { title: string; slug: string; summary?: string } }[]) {
+      if (!seen.has(e.sys.id)) seen.set(e.sys.id, { sourceId: e.sys.id, score: 0, snippet: e.fields.summary ?? "", url: `/articles/${e.fields.slug}`, title: e.fields.title, source: "contentful" });
+    }
+  }
+  return [...seen.values()].slice(0, k);
+}
 
 // Public Contentful articles — a hit only becomes a result if a page for it exists on this site.
 // Keyed by slug AND by title: after a webhook re-publish, Salesforce gives the article a new version
@@ -97,6 +120,10 @@ export async function GET(req: NextRequest) {
     .filter((h) => h.url)
     .filter((h) => h.score >= minScore)
     .sort((a, b) => b.score - a.score)
-    .slice(0, k);
-  return NextResponse.json({ hits, index: INDEX });
+    .slice(0, k)
+    .map((h) => ({ ...h, source: "data360" as const }));
+  if (hits.length > 0) return NextResponse.json({ hits, index: INDEX, source: "data360" });
+  // Index knows nothing Contentful-backed for this query → ask Contentful directly.
+  const fallback = await contentfulSearch(q, k);
+  return NextResponse.json({ hits: fallback, index: INDEX, source: fallback.length ? "contentful" : "none" });
 }
