@@ -103,7 +103,7 @@ doesn't exist in single-language orgs.
 
 - **Live:** https://servicenext.colorfuldemo.com (Vercel project `servicenext`, team `contentful-apps`)
 - **Run locally:** `cd help-center && npm install && npm run dev` — needs `help-center/.env.local` (ask Miles; never committed)
-- **Content:** space `3m1ne1iyqxvp` ("01 - ServiceNext"), Miles's custom model; the site reads type `article`, Public channel only. 100 articles were harvested from Salesforce on 2026-09-23 (entries `sf-<KnowledgeArticleId>`), plus `kbArticleResetPassword`.
+- **Content:** space `3m1ne1iyqxvp` ("01 - ServiceNext"), Miles's custom model; the site reads type `article`, Public channel only. **2026-09-24:** the Brightline set was replaced by 20 ZoomInfo articles (entries `zi*`). Salesforce Knowledge mirrors exactly what Contentful publishes (the Brightline fixtures were purged from Knowledge; `sf-kb-seed/out/dump/` is their only remaining copy).
 - **Taxonomy:** SF data categories = concept scheme `cs-sfkb-products` (`sfkb-*` concepts, notation = SF category name), bound to `article`.
 - Design notes, measured timings, config-app knobs: `docs/search-index-notes.md`
 
@@ -114,6 +114,12 @@ doesn't exist in single-language orgs.
 4. **Search box** → `/api/search` → Data 360 `vector_search` → chunks joined to the snapshot for URL name + title → **only hits that map to a public Contentful article are shown**.
 
 Rule of thumb for a demo: publish **≥30 min before** it must be searchable, or publish, wait for the next stream run (~15 min), then click Rebuild (5 min).
+
+### Bulk content change (what we ran 2026-09-24 when the Brightline set became the ZoomInfo set)
+1. Delete/unpublish the old articles in Contentful → the webhook **reconciles** (archives every Knowledge article Contentful no longer publishes; reversible). Manual trigger: `POST /api/webhooks/contentful` with header `x-contentful-topic: ContentManagement.Entry.delete` (`?dry=1` to preview).
+2. `bash scripts/purge-archived-knowledge.sh` — deletes the archived masters + empties the recycle bin (irreversible; frees cap slots).
+3. `bash scripts/resync-contentful-to-knowledge.sh` — re-fires publish for every Public article (creates them in Knowledge).
+4. Wait for the Knowledge stream (~15 min), then Data 360 → Search Index → `KA_Brightline_KB` → **Rebuild** (~5 min).
 
 ### Demo-day checklist
 - [ ] **Webhook secret in Vercel is per-deployment right now.** Run `bash help-center/vercel-env.sh` once (adds all env vars permanently + deploys). Until then, any other deploy silently breaks the webhook (401s).

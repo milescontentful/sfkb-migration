@@ -94,3 +94,9 @@ A 5-angle research sweep gathered 108 sourced claims; the adversarial verificati
 - **Dev Edition specifics:** docs reportedly say scheduled refreshes are off ("0 per day"), 1 data space, 10 GB, ~1,000 queries/day; the CRM incremental sync we observed runs anyway. A paid org likely does not speed the Knowledge hop but lifts the caps.
 - **Credits:** rebuilds reprocess everything; unstructured processing metered per MB; streaming pipelines billed higher per row than batch.
 Decision 2026-09-24: parked. Demo rule stands — publish ≥30 min ahead, or stream (~15 min) + Rebuild (5 min).
+
+## 2026-09-24 morning: content swap Brightline → ZoomInfo (observed)
+- Contentful master: 100 Brightline articles deleted, 20 ZoomInfo `article` entries published (no taxonomy concepts on them).
+- Webhook: all 26 morning publishes 502'd — Salesforce had expired the route's cached session (`INVALID_SESSION_ID`); routes now refetch on 401 and retry. The 74 unpublish + 100 delete events were no-ops (Contentful sends them without fields) → route now **reconciles** on unpublish/delete (archive Knowledge articles not published in Contentful).
+- Ran: reconcile (100 archived) → purge (100 masters deleted, bin emptied) → resync (20 created, 0 failed) between 15:00Z and 15:03Z. Knowledge = exactly Contentful's 20 public articles.
+- Stream last ran 14:59:07Z (before the swap); waiting for the next run, then Rebuild.
